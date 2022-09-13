@@ -12,16 +12,16 @@
       <h1>Person Form</h1>
       <form action="#" th:object="${personForm}" method="post">
         <div class="form-group">
-          <label for="exampleFormControlInput1">Name</label>
+          <label for="name">Name</label>
           <input type="text" class="form-control" th:field="*{name}" />
           <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="form-text text-muted">Name Error</small>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlInput1">Age</label>
+          <label for="age">Age</label>
           <input type="text" class="form-control" th:field="*{age}" />
           <small th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="form-text text-muted">Age Error</small>
         </div>
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit" id="submit">Submit form</button>
       </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,8 +41,22 @@ public class PersonTest {
 	@Test
 	void test() {
 		driver.get("http://localhost:" + port + "/person");
+
 		final String title = driver.getTitle();
+
 		assertThat(title).contains("Person Form");
+	}
+
+	@Test
+	void submitForm() {
+		driver.get("http://localhost:" + port + "/person");
+
+		driver.findElement(By.name("name")).sendKeys("Leonardo");
+		driver.findElement(By.name("age")).sendKeys("33");
+		driver.findElement(By.id("submit")).click();
+
+		final String bodyText = driver.findElement(By.tagName("body")).getText();
+		assertThat(bodyText).contains("Congratulations!");
 	}
 
 }
